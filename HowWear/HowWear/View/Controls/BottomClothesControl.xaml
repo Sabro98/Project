@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="HowWear.View.Controls.BottomClothesControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HowWear.View.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="100">
+    <UserControl.Resources>
+        <Style TargetType="CheckBox" x:Key="colorCheckBox">
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Visibility="Visible">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/> 
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="ImageBtn" Command="{Binding Path=VCommand}"
+                Visibility="{Binding Path=ImageVisible}" Grid.ColumnSpan="4">
+            <Button.Background>
+                <SolidColorBrush Opacity="0"/>
+            </Button.Background>
+            <Image Source="{Binding Path=ImagePath}" Stretch="Uniform" Grid.Column="0" Grid.Row="0" x:Name="clothesImage"/>
+        </Button>
+
+        <StackPanel HorizontalAlignment="Center"  x:Name="Panel1" Grid.Column="0"
+                    Visibility="{Binding Path=ColorVisible}" VerticalAlignment="Center">
+            <CheckBox Background="Beige" Style="{StaticResource colorCheckBox}"
+                      IsChecked="{Binding Path=Check[0]}"/>
+            <CheckBox Background="Brown" Style="{StaticResource colorCheckBox}"
+                      IsChecked="{Binding Path=Check[1]}"/>
+            <CheckBox Background="SkyBlue" Style="{StaticResource colorCheckBox}"
+                      IsChecked="{Binding Path=Check[2]}"/> <!-- 연청 -->
+            <CheckBox Background="Blue" Style="{StaticResource colorCheckBox}"
+                      IsChecked="{Binding Path=Check[3]}"/> <!-- 진청 -->
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center"  x:Name="Panel2" Grid.Column="1"
+                    Visibility="{Binding Path=ColorVisible}" VerticalAlignment="Center">
+            <CheckBox Background="#0B6138" Style="{StaticResource colorCheckBox}"
+                      IsChecked="{Binding Path=Check[4]}"/>
+            <CheckBox Background="White" Style="{StaticResource colorCheckBox}"
+                      IsChecked="{Binding Path=Check[5]}"/>
+            <CheckBox Background="Gray" Style="{StaticResource colorCheckBox}"
+                      IsChecked="{Binding Path=Check[6]}"/>
+            <CheckBox Background="Black" Style="{StaticResource colorCheckBox}"
+                      IsChecked="{Binding Path=Check[7]}"/>
+        </StackPanel>
+        <Button Grid.Column="2" Command="{Binding Path=VCommand}"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                FontSize="10" BorderThickness="0"
+                Visibility="{Binding Path=ColorVisible}">
+            <Button.Background>
+                <SolidColorBrush Opacity="0"/>
+            </Button.Background>
+            <Image Source="/Resources/accept.png" Margin="10"/>
+        </Button>
+    </Grid>
+</UserControl>

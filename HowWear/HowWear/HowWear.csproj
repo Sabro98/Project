@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1889C343-3732-41AF-B3D7-3236F6529161}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HowWear</RootNamespace>
+    <AssemblyName>HowWear</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\ClothesSetInfo.cs" />
+    <Compile Include="Model\HateListModel.cs" />
+    <Compile Include="Model\PersonalInfo.cs" />
+    <Compile Include="ViewModel\ClothesTextBlock.cs" />
+    <Compile Include="ViewModel\Commands\DeleteColCombiCommand.cs" />
+    <Compile Include="ViewModel\Commands\DeleteHateCombiCommand.cs" />
+    <Compile Include="ViewModel\Commands\ListViewCloseCommand.cs" />
+    <Compile Include="ViewModel\Commands\MainBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\CityCheckCommand.cs" />
+    <Compile Include="ViewModel\Commands\ClothesSaveCommand.cs" />
+    <Compile Include="ViewModel\Commands\PersonalSaveCommand.cs" />
+    <Compile Include="ViewModel\Converter\ClothesImageConverter.cs" />
+    <Compile Include="ViewModel\Converter\ClothesNameConverter.cs" />
+    <Compile Include="ViewModel\Converter\ComboBoxLocationConverter.cs" />
+    <Compile Include="ViewModel\Converter\FeelingConverter.cs" />
+    <Compile Include="ViewModel\Converter\FHumideConverter.cs" />
+    <Compile Include="ViewModel\Converter\ForecastClothesConverter.cs" />
+    <Compile Include="ViewModel\Converter\ForeClothesNameConverter.cs" />
+    <Compile Include="ViewModel\Converter\FWindConverter.cs" />
+    <Compile Include="ViewModel\Converter\HumidConverter.cs" />
+    <Compile Include="ViewModel\Converter\LocationImageConverter.cs" />
+    <Compile Include="ViewModel\Converter\multiParConverter.cs" />
+    <Compile Include="ViewModel\Converter\WindConverter.cs" />
+    <Compile Include="ViewModel\HateListVM.cs" />
+    <Compile Include="ViewModel\LocationVM.cs" />
+    <Compile Include="ViewModel\PersonalVM.cs" />
+    <Compile Include="ViewModel\ClothesVM.cs" />
+    <Compile Include="Model\CurrentWeatherInfo.cs" />
+    <Compile Include="Model\ForecastWeatherInfo.cs" />
+    <Compile Include="Model\LocationInfo.cs" />
+    <Compile Include="Model\ClothesInfo.cs" />
+    <Compile Include="ViewModel\Commands\ImageVisibilityCommand.cs" />
+    <Compile Include="ViewModel\Commands\LocationChangeCommand.cs" />
+    <Compile Include="ViewModel\Commands\SettingCommand.cs" />
+    <Compile Include="ViewModel\Converter\BackgroundConverter.cs" />
+    <Compile Include="ViewModel\Converter\ConditionConverter.cs" />
+    <Compile Include="ViewModel\Converter\LocationConverter.cs" />
+    <Compile Include="ViewModel\Converter\TempConverter.cs" />
+    <Compile Include="ViewModel\Converter\WeatherIconConverter.cs" />
+    <Compile Include="ViewModel\CurrentWeatherAPI.cs" />
+    <Compile Include="ViewModel\MainVM.cs" />
+    <Compile Include="ViewModel\ForecastWeatherAPI.cs" />
+    <Compile Include="View\ClothesSetting.xaml.cs">
+      <DependentUpon>ClothesSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\BottomClothesControl.xaml.cs">
+      <DependentUpon>BottomClothesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\OuterClothesControl.xaml.cs">
+      <DependentUpon>OuterClothesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\SkirtClothesControl.xaml.cs">
+      <DependentUpon>SkirtClothesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\TopClothesControl.xaml.cs">
+      <DependentUpon>TopClothesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HateListView.xaml.cs">
+      <DependentUpon>HateListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LocationSetting.xaml.cs">
+      <DependentUpon>LocationSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Option.xaml.cs">
+      <DependentUpon>Option.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PersonalSetting.xaml.cs">
+      <DependentUpon>PersonalSetting.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\background_clear.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="View\ClothesSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\BottomClothesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\OuterClothesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\SkirtClothesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\TopClothesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HateListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LocationSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Option.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PersonalSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\background_clear2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\background_clouds.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\background_clouds2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\background_night_clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\background_night_clouds.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\background_rain.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\background_rain2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\clearNightIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\cloudIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\cloudNightIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Locationsetting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\mistIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\nextBlackArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\prevBlackArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\rainIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sunIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\hood-T.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\knit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\mantoman.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\shirt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\short-T.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\turtleneck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\vest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\short-shirt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\cardigan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\fleece.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\jacket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\long-coat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\long-padding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\short-coat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\short-padding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\short-pants.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\slacks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\casual-pants.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\jean.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\jogger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\long-T.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\vest-padding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\zip_up_hoodie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\short-H_skirt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\long-flared_skirt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\long-H_skirt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TopImages\short-flared_skirt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PossibleIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\NPossibleIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\random.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\background_mist.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\background_smoke.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\eraser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\accept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\noClothes.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

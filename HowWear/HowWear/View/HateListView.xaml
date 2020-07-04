@@ -1,0 +1,51 @@
+﻿<Window x:Class="HowWear.View.HateListView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HowWear.View"
+        xmlns:vm="clr-namespace:HowWear.ViewModel"
+        xmlns:cm="clr-namespace:HowWear.ViewModel.Commands"
+        mc:Ignorable="d"
+        Title="HateClothesList" Height="400" Width="620"
+        x:Name="HateListWindow">
+    <Window.Resources>
+        <vm:HateListVM x:Key="vm"/>
+        <cm:ListViewCloseCommand x:Key="CloseCommand"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource vm}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding Path=HateModel.HateList}" BorderThickness="0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="130" Header="아우터" DisplayMemberBinding="{Binding Path=Outer}"/>
+                    <GridViewColumn Width="130" Header="상의1" DisplayMemberBinding="{Binding Path=Top1}"/>
+                    <GridViewColumn Width="130" Header="상의2" DisplayMemberBinding="{Binding Path=Top2}"/>
+                    <GridViewColumn Width="130" Header="하의" DisplayMemberBinding="{Binding Path=Bottom}"/>
+                    <GridViewColumn Width="70" Header="삭제">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Height="25" Width="60" 
+                                        HorizontalAlignment="Center" BorderThickness="0"
+                                        Command="{Binding Source={StaticResource vm}, Path=DeleteCommand}"
+                                        CommandParameter="{Binding}">
+                                    <Button.Background>
+                                        <SolidColorBrush Opacity="0"/>
+                                    </Button.Background>
+                                    <Image Source="/Resources/delete.png"/>
+                                </Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Foreground="Black" Background="LightSkyBlue" HorizontalAlignment="Center"
+                VerticalAlignment="Center" Content="Close" Command="{StaticResource CloseCommand}"
+                CommandParameter="{Binding ElementName=HateListWindow}" Grid.Row="1"
+                FontSize="20" FontWeight="SemiBold" BorderThickness="0"/>
+    </Grid>
+</Window>

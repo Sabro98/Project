@@ -1,0 +1,11 @@
+gray long-padding
+black long-padding
+black short-padding
+white long-coat
+black short-coat
+black vest-padding
+brown cardigan
+navy cardigan
+black jacket
+brown zip_up_hoodie
+white zip_up_hoodie

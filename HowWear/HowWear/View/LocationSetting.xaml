@@ -1,0 +1,97 @@
+﻿<Window x:Class="HowWear.View.LocationSetting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cm="clr-namespace:HowWear.ViewModel.Commands"
+        xmlns:vm="clr-namespace:HowWear.ViewModel"
+        xmlns:cv="clr-namespace:HowWear.ViewModel.Converter"
+        xmlns:local="clr-namespace:HowWear.View"
+        mc:Ignorable="d"
+        Title="" Height="200" Width="200"
+        x:Name="LocationWindow">
+    <Window.Resources>
+        <vm:LocationVM x:Key="locationVM"/>
+        <cv:LocationConverter x:Key="locationConverter"/>
+        <cv:ComboBoxLocationConverter x:Key="ClocationConverter"/>
+        <cv:multiParConverter x:Key="multiConverter"/>
+        <cv:LocationImageConverter x:Key="ImageConverter"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource locationVM}" Background="AliceBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center"
+                   VerticalAlignment="Center" FontWeight="SemiBold">
+            <TextBlock>
+                어디 날씨를 볼까요?
+            </TextBlock>
+        </TextBlock>
+        <!-- 위치 변경 ComboBox -->
+        <ComboBox x:Name="LocationComboBox" Background="AliceBlue"
+                          HorizontalAlignment="Center" 
+                          IsEnabled="{Binding Source={StaticResource locationVM}, Path=CheckEnable}"
+                          VerticalAlignment="Center"
+                          Grid.Row="1" DataContext="{Binding Path=Locations}">
+            <ComboBoxItem Content="{Binding CityList[0], Converter={StaticResource locationConverter}}"
+                          IsSelected="{Binding Path=InitCity[0]}"/>
+            <ComboBoxItem Content="{Binding CityList[1], Converter={StaticResource locationConverter}}"
+                          IsSelected="{Binding Path=InitCity[1]}"/>
+            <ComboBoxItem Content="{Binding CityList[2], Converter={StaticResource locationConverter}}"
+                          IsSelected="{Binding Path=InitCity[2]}"/>
+            <ComboBoxItem Content="{Binding CityList[3], Converter={StaticResource locationConverter}}"
+                          IsSelected="{Binding Path=InitCity[3]}"/>
+            <ComboBoxItem Content="{Binding CityList[4], Converter={StaticResource locationConverter}}"
+                          IsSelected="{Binding Path=InitCity[4]}"/>
+            <ComboBoxItem Content="{Binding CityList[5], Converter={StaticResource locationConverter}}"
+                          IsSelected="{Binding Path=InitCity[5]}"/>
+        </ComboBox>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="locationTextBox" BorderThickness="0, 0, 0, 1"
+                 MinWidth="50" BorderBrush="Red"
+                 VerticalAlignment="Center" HorizontalAlignment="Right"
+                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                 Text="{Binding ElementName=LocationComboBox, Path=SelectedItem,
+                        Converter={StaticResource ClocationConverter}, Mode=OneWay}"
+                        IsEnabled="{Binding Path=CheckEnable}" Grid.ColumnSpan="2" 
+                     Margin="0,11,66.6,10.4">
+                <TextBox.Background>
+                    <SolidColorBrush Opacity="0"/>
+                </TextBox.Background>
+            </TextBox>
+            <Button Grid.Column="1" HorizontalAlignment="Center" IsEnabled="{Binding Path=CheckEnable}"
+                    Margin="0, 0, 0, 0" BorderThickness="0"
+                    VerticalAlignment="Center" Command="{Binding Path=TestCommand}"
+                    CommandParameter="{Binding ElementName=locationTextBox}">
+                <Image Source="{Binding Path=CheckEnable, Converter={StaticResource ImageConverter}}"
+                       Height="19"/>
+                <Button.Background>
+                    <SolidColorBrush Opacity="0"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+
+        <Button x:Name="CompleteBtn"
+                Grid.Row="3" FontWeight="SemiBold"
+                FontSize="10" BorderThickness="0"
+                Background="LightSkyBlue"
+                HorizontalAlignment="Center" IsEnabled="{Binding Path=PossibleLocation}"
+                VerticalAlignment="Center" Command="{Binding Path=LocationCommand}"
+                Content="SAVE" Padding="5">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiConverter}">
+                    <Binding ElementName="locationTextBox" Path="Text"/>
+                    <Binding ElementName="LocationWindow"/>
+                </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
+    </Grid>
+</Window>

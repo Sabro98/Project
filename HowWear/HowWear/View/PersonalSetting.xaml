@@ -1,0 +1,194 @@
+﻿<Window x:Class="HowWear.View.PersonalSetting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HowWear.View"
+        xmlns:vm="clr-namespace:HowWear.ViewModel"
+        mc:Ignorable="d"
+        Title="PersonalSetting" Height="500" Width="800"
+        x:Name="PersonalWindow">
+    <Window.Resources>
+        <vm:PersonalVM x:Key="vm"/>
+        <Style TargetType="CheckBox" x:Key="FavCloStyle">
+            <Setter Property="Margin" Value="9"/>
+        </Style>
+        <Style TargetType="CheckBox" x:Key="FavColStyle">
+            <Setter Property="Margin" Value="4"/>
+        </Style>
+        <Style TargetType="RadioButton">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource vm}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--성별선택-->
+        <Grid Grid.Column="0">
+            <StackPanel Margin="40">
+                <Label
+                   Content="성별"
+                   FontSize="21"
+                   HorizontalAlignment="Left"/>
+                <RadioButton Content=" 남자"
+                             FontSize="20"
+                             IsChecked="{Binding Path=personal.Gender[0]}"/>
+                <RadioButton Content=" 여자"
+                             FontSize="20"
+                             IsChecked="{Binding Path=personal.Gender[1]}"/>
+            </StackPanel>
+        </Grid>
+        <!--개인 특성-->
+        <Grid Grid.Column="1"
+              Background="AliceBlue">
+            <StackPanel Margin="40">
+                <Label
+                   Content="특성"
+                   FontSize="21"
+                   HorizontalAlignment="Left"/>
+                <RadioButton Content=" 추위를 많이 탄다."
+                             FontSize="20"
+                             IsChecked="{Binding Path=personal.Characteristic[0]}"/>
+                <RadioButton Content=" 보통이다."
+                             FontSize="20"
+                             IsChecked="{Binding Path=personal.Characteristic[1]}"/>
+                <RadioButton VerticalAlignment="Center"                         
+                             Content=" 더위를 많이 탄다."
+                             FontSize="20"
+                             IsChecked="{Binding Path=personal.Characteristic[2]}"/>
+            </StackPanel>
+        </Grid>
+        <!--싫어하는 옷-->
+        <Grid Grid.Row="1"
+              Background="AliceBlue">
+            <StackPanel Margin="40">
+                <Label 
+                   Content="좋아하는 색"
+                   FontSize="21"
+                   HorizontalAlignment="Left"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <CheckBox Content="빨강" Background="Red"
+                                  IsChecked="{Binding Path=personal.FavCol[0]}"
+                                  Style="{StaticResource FavColStyle}"/>
+                        <CheckBox Content="주황" Background="Orange"
+                                  IsChecked="{Binding Path=personal.FavCol[1]}"
+                                  Style="{StaticResource FavColStyle}"/>
+                        <CheckBox Content="노랑" Background="Yellow"
+                                  IsChecked="{Binding Path=personal.FavCol[2]}"
+                                  Style="{StaticResource FavColStyle}"/>
+                        <CheckBox Content="베이지" Background="Beige"
+                                  IsChecked="{Binding Path=personal.FavCol[3]}"
+                                  Style="{StaticResource FavColStyle}"/>
+                        <CheckBox Content="브라운" Background="Brown"
+                                  IsChecked="{Binding Path=personal.FavCol[4]}"
+                                  Style="{StaticResource FavColStyle}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <CheckBox Content="초록" Background="Green"
+                                  IsChecked="{Binding Path=personal.FavCol[5]}"
+                                  Style="{StaticResource FavColStyle}"/>
+                        <CheckBox Content="민트" Background="Aquamarine"
+                                  IsChecked="{Binding Path=personal.FavCol[6]}"
+                                  Style="{StaticResource FavColStyle}"/>
+                        <CheckBox Content="하늘" Background="SkyBlue"
+                                  IsChecked="{Binding Path=personal.FavCol[7]}"
+                                  Style="{StaticResource FavColStyle}"/>
+                        <CheckBox Content="파랑" Background="Blue"
+                                  IsChecked="{Binding Path=personal.FavCol[8]}"
+                                  Style="{StaticResource FavColStyle}"/>
+                        <CheckBox Content="네이비" Background="Navy"
+                                  IsChecked="{Binding Path=personal.FavCol[9]}"
+                                  Style="{StaticResource FavColStyle}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <CheckBox Content="남색" Background="Purple"
+                                  IsChecked="{Binding Path=personal.FavCol[10]}"
+                                  Style="{StaticResource FavColStyle}"/>
+                        <CheckBox Content="핑크" Background="LightPink"
+                                  IsChecked="{Binding Path=personal.FavCol[11]}"
+                                  Style="{StaticResource FavColStyle}"/>
+                        <CheckBox Content="하양" Background="White"
+                                  IsChecked="{Binding Path=personal.FavCol[12]}"
+                                  Style="{StaticResource FavColStyle}"/>
+                        <CheckBox Content="회색" Background="Gray"
+                                  IsChecked="{Binding Path=personal.FavCol[13]}"
+                                  Style="{StaticResource FavColStyle}"/>
+                        <CheckBox Content="검정" Background="Black"
+                                  IsChecked="{Binding Path=personal.FavCol[14]}"
+                                  Style="{StaticResource FavColStyle}"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <!--퍼스널컬러-->
+        <Grid Grid.Row="1"
+              Grid.Column="2">
+            <StackPanel Margin="40">
+                <Label Content="좋아하는 옷"
+                       FontSize="21"
+                       HorizontalAlignment="Left"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <CheckBox Content="목티"
+                                  Style="{StaticResource ResourceKey=FavCloStyle}"
+                                  IsChecked="{Binding Path=personal.FavClothes[0]}"/>
+                        <CheckBox Content="니트"
+                                  Style="{StaticResource ResourceKey=FavCloStyle}"
+                                  IsChecked="{Binding Path=personal.FavClothes[1]}"/>
+                        <CheckBox Content="조끼"
+                                  Style="{StaticResource ResourceKey=FavCloStyle}"
+                                  IsChecked="{Binding Path=personal.FavClothes[2]}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <CheckBox Content="후드티"
+                                  Style="{StaticResource ResourceKey=FavCloStyle}"
+                                  IsChecked="{Binding Path=personal.FavClothes[3]}"/>
+                        <CheckBox Content="맨투맨"
+                                  Style="{StaticResource ResourceKey=FavCloStyle}"
+                                  IsChecked="{Binding Path=personal.FavClothes[4]}"/>
+                        <CheckBox Content="셔츠"
+                                  Style="{StaticResource ResourceKey=FavCloStyle}"
+                                  IsChecked="{Binding Path=personal.FavClothes[5]}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <CheckBox Content="긴팔"
+                                  Style="{StaticResource ResourceKey=FavCloStyle}"
+                                  IsChecked="{Binding Path=personal.FavClothes[6]}"/>
+                        <CheckBox Content="반팔"
+                                  Style="{StaticResource ResourceKey=FavCloStyle}"
+                                  IsChecked="{Binding Path=personal.FavClothes[7]}"/>
+                        <CheckBox Content="반팔셔츠"
+                                  Style="{StaticResource ResourceKey=FavCloStyle}"
+                                  IsChecked="{Binding Path=personal.FavClothes[8]}"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+            <Button x:Name="saveBtn" BorderThickness="0"
+                    Content="Save"
+                    FontSize="25"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Right"
+                    Margin="10"
+                    Background="LightSkyBlue"
+                    Command="{Binding Path=SaveCommand}"
+                    CommandParameter="{Binding ElementName=PersonalWindow}"/>
+        </Grid>
+    </Grid>
+</Window>

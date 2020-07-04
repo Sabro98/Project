@@ -1,0 +1,7 @@
+light_blue jean
+deep_blue jean
+black slacks
+beige casual-pants
+khaki casual-pants
+beige short-pants
+black short-pants

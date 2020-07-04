@@ -1,0 +1,322 @@
+﻿<Window x:Class="HowWear.View.ClothesSetting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:control="clr-namespace:HowWear.View.Controls"
+        xmlns:local="clr-namespace:HowWear.View"
+        xmlns:vm="clr-namespace:HowWear.ViewModel"
+        mc:Ignorable="d"
+        Title="TopCLothesSetting" Height="520" Width="450"
+        x:Name="ClothesWindow">
+    <Window.Resources>
+        <vm:ClothesVM x:Key="vm"/>
+        <Style TargetType="TextBlock" x:Key="clothesBlock">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="Regular"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="White"
+          DataContext="{StaticResource vm}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TabControl>
+            <!--아우터 탭-->
+            <TabItem Header="아우터"
+                     Background="AliceBlue">
+                <Grid x:Name="Top">
+                    <!--전체적인 칸-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition />
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition />
+                        <RowDefinition Height="0.3*"/>
+                    </Grid.RowDefinitions>
+
+                    <control:OuterClothesControl DataContext="{Binding Path=OuterInfo[0]}"/>
+                    <TextBlock Text="롱패딩" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="0" Grid.Row="1" Style="{StaticResource clothesBlock}"/>
+
+                    <control:OuterClothesControl Grid.Column="1" DataContext="{Binding Path=OuterInfo[1]}"/>
+                    <TextBlock Text="숏패딩" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="1" Grid.Row="1" Style="{StaticResource clothesBlock}"/>
+
+                    <control:OuterClothesControl Grid.Column="2" DataContext="{Binding Path=OuterInfo[2]}"/>
+                    <TextBlock Text="롱코트" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="2" Grid.Row="1" Style="{StaticResource clothesBlock}"/>
+
+                    <control:OuterClothesControl Grid.Row="2" Grid.Column="0" DataContext="{Binding Path=OuterInfo[3]}"/>
+                    <TextBlock Text="숏코트" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="0" Grid.Row="3" Style="{StaticResource clothesBlock}"/>
+
+                    <control:OuterClothesControl Grid.Row="2" Grid.Column="1" DataContext="{Binding Path=OuterInfo[4]}"/>
+                    <TextBlock Text="조끼패딩" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="1" Grid.Row="3" Style="{StaticResource clothesBlock}"/>
+
+                    <control:OuterClothesControl Grid.Row="2" Grid.Column="2" DataContext="{Binding Path=OuterInfo[5]}"/>
+                    <TextBlock Text="가디건" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="2" Grid.Row="3" Style="{StaticResource clothesBlock}"/>
+
+                    <control:OuterClothesControl Grid.Row="4" Grid.Column="0" DataContext="{Binding Path=OuterInfo[6]}"/>
+                    <TextBlock Text="후리스" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="0" Grid.Row="5" Style="{StaticResource clothesBlock}"/>
+
+                    <control:OuterClothesControl Grid.Row="4" Grid.Column="1" DataContext="{Binding Path=OuterInfo[7]}"/>
+                    <TextBlock Text="자켓" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="1" Grid.Row="5" Style="{StaticResource clothesBlock}"/>
+
+                    <control:OuterClothesControl Grid.Row="4" Grid.Column="2" DataContext="{Binding Path=OuterInfo[8]}"/>
+                    <TextBlock Text="후드집업" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="2" Grid.Row="5" Style="{StaticResource clothesBlock}"/>
+                    <!--선 구분-->
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="0" Grid.Column="0" 
+                            Grid.RowSpan="6"/>
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="0" Grid.Column="1"
+                            Grid.RowSpan="6"/>
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="0" Grid.Column="2" 
+                            Grid.RowSpan="6"/>
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="0" Grid.Column="0"
+                            Grid.ColumnSpan="3" />
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="2"  Grid.Column="0"
+                            Grid.ColumnSpan="3" />
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="4" Grid.Column="0" 
+                            Grid.ColumnSpan="3"/>
+                </Grid>
+            </TabItem>
+
+            <!--상의 탭-->
+            <TabItem Header="상의"
+                     Background="AliceBlue">
+                <Grid>
+                    <!--전체적인 칸-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition />
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition />
+                        <RowDefinition Height="0.3*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--목티-->
+                    <control:TopClothesControl DataContext="{Binding Path=TopInfo[0]}"/>
+                    <TextBlock Text="목티" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="0" Grid.Row="1" Style="{StaticResource clothesBlock}"/>
+
+                    <!--니트-->
+                    <control:TopClothesControl Grid.Column="1" DataContext="{Binding Path=TopInfo[1]}"/>
+                    <TextBlock Text="니트" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="1" Grid.Row="1" Style="{StaticResource clothesBlock}"/>
+
+                    <!--조끼-->
+                    <control:TopClothesControl Grid.Column="2" DataContext="{Binding Path=TopInfo[2]}"/>
+                    <TextBlock Text="조끼" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="2" Grid.Row="1" Style="{StaticResource clothesBlock}"/>
+
+                    <!--후드티-->
+                    <control:TopClothesControl Grid.Row="2" Grid.Column="0" DataContext="{Binding Path=TopInfo[3]}"/>
+                    <TextBlock Text="후드티" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="0" Grid.Row="3" Style="{StaticResource clothesBlock}"/>
+
+                    <!--맨투맨-->
+                    <control:TopClothesControl Grid.Row="2" Grid.Column="1" DataContext="{Binding Path=TopInfo[4]}"/>
+                    <TextBlock Text="맨투맨" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="1" Grid.Row="3" Style="{StaticResource clothesBlock}"/>
+
+                    <!--셔츠-->
+                    <control:TopClothesControl Grid.Row="2" Grid.Column="2" DataContext="{Binding Path=TopInfo[5]}"/>
+                    <TextBlock Text="셔츠" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="2" Grid.Row="3" Style="{StaticResource clothesBlock}"/>
+
+                    <!--긴팔티-->
+                    <control:TopClothesControl Grid.Row="4" Grid.Column="0" DataContext="{Binding Path=TopInfo[6]}"/>
+                    <TextBlock Text="긴팔" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="0" Grid.Row="5" Style="{StaticResource clothesBlock}"/>
+
+                    <!--반팔티-->
+                    <control:TopClothesControl Grid.Row="4" Grid.Column="1" DataContext="{Binding Path=TopInfo[7]}"/>
+                    <TextBlock Text="반팔" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="1" Grid.Row="5" Style="{StaticResource clothesBlock}"/>
+
+                    <!--나시-->
+                    <control:TopClothesControl Grid.Row="4" Grid.Column="2" DataContext="{Binding Path=TopInfo[8]}"/>
+                    <TextBlock Text="반팔셔츠" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="2" Grid.Row="5" Style="{StaticResource clothesBlock}"/>
+
+                    <!--선 구분-->
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="0" Grid.Column="0" 
+                            Grid.RowSpan="6"/>
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="0" Grid.Column="1"
+                            Grid.RowSpan="6"/>
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="0" Grid.Column="2" 
+                            Grid.RowSpan="6"/>
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="0" Grid.Column="0"
+                            Grid.ColumnSpan="3" />
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="2"  Grid.Column="0"
+                            Grid.ColumnSpan="3" />
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="4" Grid.Column="0" 
+                            Grid.ColumnSpan="3"/>
+                </Grid>
+            </TabItem>
+            
+            <!--바지 탭-->
+            <TabItem Header="바지"
+                     Background="AliceBlue">
+                <Grid>
+                    <!--전체적인 칸-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.3*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--목티-->
+                    <control:BottomClothesControl DataContext="{Binding Path=BottomInfo[0]}"/>
+                    <TextBlock Text="청바지" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="0" Grid.Row="1" Style="{StaticResource clothesBlock}"/>
+
+                    <!--니트-->
+                    <control:BottomClothesControl Grid.Column="1" DataContext="{Binding Path=BottomInfo[1]}"/>
+                    <TextBlock Text="슬랙스" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="1" Grid.Row="1" Style="{StaticResource clothesBlock}"/>
+
+                    <!--조끼-->
+                    <control:BottomClothesControl Grid.Column="2" DataContext="{Binding Path=BottomInfo[2]}"/>
+                    <TextBlock Text="조거팬츠" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="2" Grid.Row="1" Style="{StaticResource clothesBlock}"/>
+
+                    <!--후드티-->
+                    <control:BottomClothesControl Grid.Row="2" Grid.Column="0" DataContext="{Binding Path=BottomInfo[3]}"/>
+                    <TextBlock Text="면바지" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="0" Grid.Row="3" Style="{StaticResource clothesBlock}"/>
+
+                    <!--맨투맨-->
+                    <control:BottomClothesControl Grid.Row="2" Grid.Column="1" DataContext="{Binding Path=BottomInfo[4]}"/>
+                    <TextBlock Text="반바지" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="1" Grid.Row="3" Style="{StaticResource clothesBlock}"/>
+
+                    <!--선 구분-->
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="0" Grid.Column="0" 
+                            Grid.RowSpan="6"/>
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="0" Grid.Column="1"
+                            Grid.RowSpan="6"/>
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="0" Grid.Column="2" 
+                            Grid.RowSpan="6"/>
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="0" Grid.Column="0"
+                            Grid.ColumnSpan="3" />
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="2"  Grid.Column="0"
+                            Grid.ColumnSpan="3" />
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="4" Grid.Column="0" 
+                            Grid.ColumnSpan="3"/>
+                </Grid>
+            </TabItem>
+            
+            <!--스커트 탭-->
+            <TabItem Header="스커트"
+                     Background="AliceBlue">
+                <Grid>
+                    <!--전체적인 칸-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.3*"/>
+                    </Grid.RowDefinitions>
+
+                    <control:SkirtClothesControl DataContext="{Binding Path=SkirtInfo[0]}"/>
+                    <TextBlock Text="롱 플레어 스커트" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="0" Grid.Row="1" Style="{StaticResource clothesBlock}"/>
+
+                    <control:SkirtClothesControl Grid.Column="1" DataContext="{Binding Path=SkirtInfo[1]}"/>
+                    <TextBlock Text="롱 H 스커트" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="1" Grid.Row="1" Style="{StaticResource clothesBlock}"/>
+
+                    <control:SkirtClothesControl Grid.Column="2" DataContext="{Binding Path=SkirtInfo[2]}"/>
+                    <TextBlock Text="숏 플레어 스커트" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="2" Grid.Row="1" Style="{StaticResource clothesBlock}"/>
+
+                    <control:SkirtClothesControl Grid.Row="2" Grid.Column="0" DataContext="{Binding Path=SkirtInfo[3]}"/>
+                    <TextBlock Text="숏 H 스커트" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="0" Grid.Row="3" Style="{StaticResource clothesBlock}"/>
+
+                    <!--선 구분-->
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="0" Grid.Column="0" 
+                            Grid.RowSpan="6"/>
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="0" Grid.Column="1"
+                            Grid.RowSpan="6"/>
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="0" Grid.Column="2" 
+                            Grid.RowSpan="6"/>
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="0" Grid.Column="0"
+                            Grid.ColumnSpan="3" />
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="2"  Grid.Column="0"
+                            Grid.ColumnSpan="3" />
+                    <Border BorderThickness="1" BorderBrush="SkyBlue"
+                            Grid.Row="4" Grid.Column="0" 
+                            Grid.ColumnSpan="3"/>
+                </Grid>
+            </TabItem>
+            
+            <!--잡화 탭-->
+        </TabControl>
+
+        <Button Content="Save"
+                FontSize="25"
+                Grid.Row="1" BorderThickness="0"
+                Background="LightSkyBlue"
+                Margin="310, 10, 10, 10"
+                Command="{Binding Path=SaveCommand}"
+                CommandParameter="{Binding ElementName=ClothesWindow}"/>
+    </Grid>
+</Window>
