@@ -9,7 +9,7 @@ public class GameFrame extends JFrame {
 	private GamePanel gamePanel = new GamePanel();
 
 	GameFrame() {
-		setBounds(150, 150, 500, 520);
+		setBounds(150, 150, 500, 522);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		add(gamePanel);
 

@@ -7,5 +7,7 @@ public class Stone extends JLabel {
 	
 	Stone(String path){
 		icon = new ImageIcon(path);
+		setSize(icon.getIconWidth(), icon.getIconHeight());
+		setIcon(icon);
 	}
 }
