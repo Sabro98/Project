@@ -9,14 +9,17 @@ public class Stone extends JLabel {
 	private final int FPS = 60;
 	private final int ONE_SEC = 1000;
 	private final int DELAY = ONE_SEC / FPS;
+	private GamePanel panel;
 	private int moveCnt;
 	private int stonePower;
 	private int moveSize;
 	private int moveDirection;
 	private ImageIcon icon;
-	private Timer timer;
+	private Timer moveTimer;
+	private boolean drawDirection;
+	
 
-	Stone(String path, Point init_point, String direction) {
+	Stone(String path, Point init_point, String direction, GamePanel panel) {
 		icon = new ImageIcon(path);
 		setSize(icon.getIconWidth(), icon.getIconHeight());
 		setIcon(icon);
@@ -24,6 +27,8 @@ public class Stone extends JLabel {
 		setLocation(init_point);
 		setBounds(getX() - getWidth() / 2, getY() - getHeight() / 2, getWidth(), getHeight());
 		setStoneMovement(direction);
+		
+		this.panel = panel;
 	}
 
 	private void setStoneMovement(String direction) {
@@ -38,25 +43,40 @@ public class Stone extends JLabel {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				timer.start();
+				moveTimer.start();
+				panel.setDrawDirection(false);
+				panel.repaint();
 			}
 		});
 
-		timer = new Timer(DELAY, new ActionListener() {
+		moveTimer = new Timer(DELAY, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				moveCnt++;
 				moveStone(0, moveDirection * moveSize);
 				moveSize --;
 				if (moveCnt == 15) {
-					timer.stop();
+					moveTimer.stop();
 					moveCnt = 0;
 					moveSize = 15;
 				}
 			}
 		});
 	}
-
+	
+	void setDrawDirection(boolean draw) {
+		drawDirection = draw;
+	}
+	
+	boolean getDrawDirection() {
+		return drawDirection;
+	}
+	
+	Point getCenter() {
+		Point center = new Point(getX() + getWidth()/2, getY() + getHeight()/2);
+		return center;
+	}
+	
 	int getStonePower() {
 		return stonePower;
 	}
